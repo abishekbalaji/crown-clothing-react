@@ -6,6 +6,7 @@ import "./App.css";
 import Homepage from "./pages/homepage/Homepage.component";
 import ShopPage from "./pages/shopPage/ShopPage.component";
 import Header from "./components/header/Header.component";
+import SignInandSignUpPage from "./pages/signInandSignUp/signInandSignUp.component";
 
 const App = () => (
   <div>
@@ -13,6 +14,7 @@ const App = () => (
     <Switch>
       <Route path="/" component={Homepage} exact />
       <Route path="/shop" component={ShopPage} />
+      <Route path="/signin" component={SignInandSignUpPage} />
     </Switch>
   </div>
 );
