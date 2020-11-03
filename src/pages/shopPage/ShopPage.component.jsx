@@ -1,20 +1,16 @@
 import React from "react";
+import { Route } from "react-router-dom";
 
-import SHOP_DATA from "./Shop.data";
-import CollectionPreview from "../../components/CollectionsPreview/CollectionPreview.component";
+import CollectionsOverview from "../../components/collections-overview/collections-overview.component";
+import CollectionPage from "../collection/collection.component";
 
-export default class ShopPage extends React.Component {
-  state = {
-    collections: SHOP_DATA,
-  };
-  render() {
-    const { collections } = this.state;
-    return (
-      <div className="shop-page">
-        {collections.map(({ id, ...otherCollectionProps }) => (
-          <CollectionPreview key={id} {...otherCollectionProps} />
-        ))}
-      </div>
-    );
-  }
-}
+// match can be accessed because ShopPage is nested inside Route in App.js.
+// So, Route gives it access to the 3 objects - match, location and history
+const ShopPage = ({ match }) => (
+  <div className="shop-page">
+    <Route exact path={`${match.path}`} component={CollectionsOverview} />
+    <Route path={`${match.path}/:collectionId`} component={CollectionPage} />
+  </div>
+);
+
+export default ShopPage;
